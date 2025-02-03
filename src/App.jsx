@@ -49,9 +49,9 @@ function App() {
       setTimeout(() => {
         startGame();
       }, 1000);
-      setGameStatus("Correct! Well done!");
+      setGameStatus("You are correct");
     } else {
-      setGameStatus("Wrong! Try again.");
+      setGameStatus("You are wrong. Try again.");
     }
   };
 
