@@ -1,31 +1,40 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Easy from './easy.jsx';
+import Hard from './hard.jsx';
+import Medi from './assets/woman-meditation-lotus-pose-icon-isolated.png'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
-const colors = [
-  '#FF5733', '#33FF57', '#3357FF', '#F333FF', '#33FFF5', '#FF33A1',
-  '#A833FF', '#33FFA8', '#FFC733', '#33C7FF', '#FF3364', '#6433FF',
-  '#3A7CA5', '#F94144', '#277DA1', '#F8961E', '#F9C74F', '#90BE6D', 
-  '#43AA8B', '#4D9078', '#E9C46A', '#F4A261', '#E76F51', '#D9ED92', 
-  '#B5E48C', '#99D98C', '#76C893', '#52B69A', 
-  '#34A0A4', '#168AAD', 
-  '#1A759F', '#1E6091', '#184E77', '#6A4C93', '#5A189A', '#7B2CBF', 
-  '#9D4EDD', '#C77DFF', '#E0AAFF', '#C8B8DB', '#AF8EAC', '#9D8189', 
-  '#F7B801', '#FC766A', '#184A45', '#EF4423', '#C11B17', '#7D0552', 
-  '#8A4FFF', '#3DED97', '#C3423F', '#9EF01A', '#A2D5F2', '#59CD90', 
-  '#F7B32D', '#E83F6F', 
-  '#2274A5', '#432818', '#BB9457', '#432534', '#A4161A'
-];
 
 function App() {
-  const [targetColor, setTargetColor] = useState('');
-  const [colorOptions, setColorOptions] = useState([]);
-  const [gameStatus, setGameStatus] = useState('');
-  const [score, setScore] = useState(0);
+    useEffect(() => {
+      AOS.init({ duration: 1200 });
+    }, []);
+  return (
 
-  const startGame= (resetScore = false)=> {
-    const randomTarget = colors[Math.floor(Math.random() * colors.length)];
-    setTargetColor(randomTarget);
+    <BrowserRouter> 
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div data-aos='fade-up' className='container '>
+              <h1 id='h1-a'>Welcome To My Eye Color Game</h1>
+              <img className='medi-img' src={Medi} alt="" />
+              <div className='buttons'>
+              <Link to="/easy"><button className="b3n">Easy</button></Link>
+              <Link to="/hard"><button className="b3n">Hard</button></Link>
+              </div>
+            </div>
+          }
+        />
+        <Route path="/easy" element={<Easy />} />
+        <Route path="/hard" element={<Hard />} />
+      </Routes>
+    </BrowserRouter>
 
+<<<<<<< HEAD
     const options = [randomTarget];
     while (options.length < 6) {
       const randomOption = colors[Math.floor(Math.random() * colors.length)];
@@ -94,6 +103,8 @@ function App() {
       </div>
       </div>
     
+=======
+>>>>>>> 5ec0d61 (Updated project with new changes)
   );
 }
 
